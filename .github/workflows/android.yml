@@ -33,15 +33,19 @@ jobs:
 
       - name: Capacitor Setup & Sync
         run: |
-          npx cap add android || echo "Android already added"
-          npx cap copy
-          npx cap sync
+          npx cap add android
+          npx cap sync android
+          ls -la
 
       - name: Build with Gradle
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug --stacktrace
+          ./gradlew assembleDebug --stacktrace --info
+
+      - name: List Build Result
+        run: |
+          find android/app/build/outputs/apk/debug/ -name "*.apk"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
