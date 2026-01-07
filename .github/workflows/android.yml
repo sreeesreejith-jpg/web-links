@@ -18,7 +18,9 @@ jobs:
           node-version: '18'
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install @capacitor/android@5
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -29,9 +31,9 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Capacitor Sync
+      - name: Capacitor Setup & Sync
         run: |
-          npx cap add android
+          npx cap add android || echo "Android already added"
           npx cap copy
           npx cap sync
 
@@ -39,7 +41,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
