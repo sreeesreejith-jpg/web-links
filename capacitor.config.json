@@ -1,0 +1,6 @@
+{
+    "appId": "com.vhse.links",
+    "appName": "Quick Links",
+    "webDir": ".",
+    "bundledWebRuntime": false
+}

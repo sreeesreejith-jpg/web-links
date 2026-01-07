@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Quick Links</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-content">
+                <h1>My Links</h1>
+                <p>Fast access to your favorite sites</p>
+            </div>
+            <button id="add-btn" class="icon-btn" aria-label="Add new link">
+                <i data-lucide="plus"></i>
+            </button>
+        </header>
+
+        <main id="links-container">
+            <!-- Links will be injected here -->
+            <div class="empty-state">
+                <div class="empty-icon"><i data-lucide="link-2"></i></div>
+                <p>No links yet. Tap the + icon to add one.</p>
+            </div>
+        </main>
+
+        <!-- Add Link Modal -->
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div class="modal">
+                <h2>Add New Link</h2>
+                <form id="add-link-form">
+                    <div class="input-group">
+                        <label for="link-name">Name</label>
+                        <input type="text" id="link-name" placeholder="E.g. Google" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="link-url">URL</label>
+                        <input type="url" id="link-url" placeholder="https://google.com" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" id="cancel-btn" class="secondary-btn">Cancel</button>
+                        <button type="submit" class="primary-btn">Add Link</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
